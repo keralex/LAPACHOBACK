@@ -56,7 +56,7 @@ router.post('/add', (req,res)=>{
   }
 })
 
-// get a user login
+// user login request
 router.get('/login', (req, res) => {
   let {email} = req.query;
   let errors=[]
