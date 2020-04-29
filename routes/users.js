@@ -3,7 +3,6 @@ const router = express.Router();
 const db = require('../config/sequalize')
 const User = require('../models/user');
 
-// router.get('/', (req, res) => res.send('USERS'));
 // get users
 router.get('/', (req, res) => 
   User.findAll()
@@ -15,7 +14,7 @@ router.get('/', (req, res) =>
 
 // Create a user
 router.post('/add', (req,res)=>{
-  let {name, email, password, dni, phone} = req.body;
+  let {name, email, password, dni, phone, domicilio} = req.body;
   let errors=[]
   if(!name) {
     errors.push({text:'please add title'});
@@ -32,15 +31,10 @@ router.post('/add', (req,res)=>{
   if(!phone) {
     errors.push({text:'please add phone'});
   }
+  if(!domicilio) {
+    errors.push({text:'please add domicilio'});
+  }
   if(errors.length > 0) {
-    // res.render('add', {
-    //   errors,
-    //   name,
-    //   email,
-    //   password,
-    //   dni,
-    //   phone
-    // })
     console.log(errors)
   } else {
     // insert into table
@@ -49,7 +43,8 @@ router.post('/add', (req,res)=>{
       email,
       password,
       dni,
-      phone
+      phone,
+      domicilio
     })
       .then(user => res.redirect('/hello'))
       .catch(error=>console.log(error))

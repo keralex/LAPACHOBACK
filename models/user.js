@@ -17,10 +17,14 @@ const User = db.define('User', {
   phone: {
     type: Sequalize.INTEGER
   },
+  domicilio: {
+    type: Sequalize.STRING
+  },
 },
 {
   tableName: 'Users',
   timestamps: false           // this will deactivate the timestamp columns
 })
 User.sync()
+
 module.exports = User;
