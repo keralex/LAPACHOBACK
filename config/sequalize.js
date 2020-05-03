@@ -1,10 +1,10 @@
 const { Sequelize } = require('sequelize');
-module.exports = new Sequelize('ellapacho_db', 'root', '123456', {
+module.exports = new Sequelize('ellapacho_db', 'ellapacho_root', 'tms2620sql', {
   dialect: 'mariadb',
-  host:'192.168.0.155',
-  user: 'root',
+  host:'167.250.5.60',
+  user: 'ellapacho_root',
   // protocol: null,
-  port: 3307,
+  port: 3306,
   // define: {
   //   syncOnAssociation: true,
   //   charset: 'utf8',

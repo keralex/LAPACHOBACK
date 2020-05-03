@@ -1,9 +1,10 @@
 const Sequalize = require('sequelize');
 const db = require('../config/sequalize')
 
-const product = db.define('LSTPRECIOS', {
-  ID: {
-    type: Sequalize.INTEGER
+const product = db.define('lstprecios', {
+  id:{
+    type: Sequalize.INTEGER,
+    primaryKey: true
   },
   PRODID: {
     type: Sequalize.CHAR
@@ -31,7 +32,7 @@ const product = db.define('LSTPRECIOS', {
   },
 },
   {
-    tableName: 'LSTPRECIOS',
+    tableName: 'lstprecios',
     timestamps: false           // this will deactivate the timestamp columns
   }
 )
