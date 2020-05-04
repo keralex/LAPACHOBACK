@@ -16,6 +16,7 @@ router.get('/', (req, res) =>
 router.post('/add', (req,res)=>{
   let {name, email, password, dni, phone, domicilio} = req.body;
   let errors=[]
+  console.log(req.body)
   if(!name) {
     errors.push({text:'please add title'});
   }
