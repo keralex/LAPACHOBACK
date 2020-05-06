@@ -2,9 +2,6 @@ const Sequalize = require('sequelize');
 const db = require('../config/sequalize')
 
 const order = db.define('pedidos', {
-  ARTICULOS: {
-    type: Sequalize.JSON
-  },
   TOTAL: {
     type: Sequalize.DOUBLE
   },
@@ -17,7 +14,7 @@ const order = db.define('pedidos', {
   NOMBRE_CLIENTE: {
     type: Sequalize.CHAR
   },
-  GMAIL_CLIENTE: {
+  EMAIL_CLIENTE: {
     type: Sequalize.CHAR
   },
   TELEFONO_CLIENTE: {

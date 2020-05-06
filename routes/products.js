@@ -5,7 +5,18 @@ const { Op } = require("sequelize");
 
 // get products
 router.get('/', (req, res) => 
-  Product.findAll({limit:10})
+  Product.findAll({
+    limit:100,
+    where: {
+      STOCK: {
+        [Op.gte]: 150
+      }
+    },
+    order: [
+      ['ARTICULO', 'ASC'],
+    ],
+
+  })
     .then(products => {
       res.send(products);
     })
@@ -14,9 +25,17 @@ router.get('/', (req, res) =>
 // get products by categorie
 router.get('/byCategory', (req, res) => {
   let {category} = req.query
-  Product.findAll({where: {
-    RUBRO: category
-  }})
+  Product.findAll({
+    where: {
+      RUBRO: category,
+      STOCK: {
+        [Op.gte]: 100
+      }
+    },
+    order: [
+      ['ARTICULO', 'ASC'],
+    ],
+  })
     .then(products => {
       res.send(products);
     })
@@ -26,11 +45,19 @@ router.get('/byCategory', (req, res) => {
 router.get('/byName', (req, res) => {
   let {name} = req.query
 
-  Product.findAll({where: {
-    ARTICULO: {
-      [Op.like] : name + '%'
-    }
-  }})
+  Product.findAll({
+    where: {
+      ARTICULO: {
+        [Op.like] : name + '%'
+      },
+      STOCK: {
+        [Op.gte]: 150
+      }
+    },
+    order: [
+      ['ARTICULO', 'ASC'],
+    ],
+  })
     .then(products => {
       res.send(products);
     })

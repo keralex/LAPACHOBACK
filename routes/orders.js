@@ -15,12 +15,9 @@ router.get('/', (req, res) =>
 // add an order
 router.post('/add', (req,res)=>{
   console.log(req.body)
-  let {ARTICULOS, TOTAL, DIRECCION, FECHA_ENTREGA, NOMBRE_CLIENTE, GMAIL_CLIENTE, TELEFONO_CLIENTE} = req.body;
+  let {TOTAL, DIRECCION, FECHA_ENTREGA, NOMBRE_CLIENTE, EMAIL_CLIENTE, TELEFONO_CLIENTE} = req.body;
   let errors=[]
 
-  if(!ARTICULOS) {
-    errors.push({text:'please add ARTICULOS'});
-  }
   if(!TOTAL) {
     errors.push({text:'please add TOTAL'});
   }
@@ -33,8 +30,8 @@ router.post('/add', (req,res)=>{
   if(!NOMBRE_CLIENTE) {
     errors.push({text:'please add NOMBRE_CLIENTE'});
   }
-  if(!GMAIL_CLIENTE) {
-    errors.push({text:'please add GMAIL_CLIENTE'});
+  if(!EMAIL_CLIENTE) {
+    errors.push({text:'please add EMAIL_CLIENTE'});
   }
   if(!TELEFONO_CLIENTE) {
     errors.push({text:'please add TELEFONO_CLIENTE'});
@@ -44,15 +41,14 @@ router.post('/add', (req,res)=>{
   } else {
     // insert into table
     Order.create({
-      ARTICULOS,
       TOTAL,
       DIRECCION,
       FECHA_ENTREGA,
       NOMBRE_CLIENTE,
-      GMAIL_CLIENTE,
+      EMAIL_CLIENTE,
       TELEFONO_CLIENTE
     })
-      .then(order => console.log(order))
+      .then(order => res.send(order))
       .catch(error=>console.log(error))
   }
 })

@@ -9,6 +9,7 @@ const users = require('./routes/users')
 const categories = require('./routes/categories')
 const products = require('./routes/products')
 const orders = require('./routes/orders')
+const orderItems = require('./routes/orderItems')
 
 const db = require('./config/sequalize');
 const server = app.listen(port, () => { 
@@ -28,3 +29,5 @@ app.use('/users', users)
 app.use('/categories', categories)
 app.use('/products', products)
 app.use('/orders', orders)
+app.use('/orderItems', orderItems)
+
